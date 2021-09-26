@@ -1,5 +1,7 @@
+import { SelectorMatcher } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { GetApiService } from './get-api.service';
+
+import { GetApiService } from './services/get-api.service'; 
 
 @Component({
   selector: 'app-root',
@@ -8,14 +10,19 @@ import { GetApiService } from './get-api.service';
   providers: [GetApiService],
 })
 export class AppComponent {
+  user:any;
+  repos:any;
+  
   title = 'fyle-project';
   constructor(private api:GetApiService){
-
+    console.log('Github Component Init...');
   }
   ngOnInit(){
-    this.api.apiCall().subscribe((data)=>{
-      console.warn("get api data",data);
-      //this.title=data['title'];
-    })
+   // this.api.getProfileInfo().subscribe((data)=>{
+    //  console.warn("get api data",data);
+    //  this.title=data['title'];
+    //})
+  
   }
+ 
 }

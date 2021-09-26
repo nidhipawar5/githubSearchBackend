@@ -4,15 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import { GetApiService } from './get-api.service';
+import { FormsModule } from '@angular/forms';
+import { GetApiService } from './services/get-api.service';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
+    ProfileComponent, 
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [GetApiService],
   bootstrap: [AppComponent]
