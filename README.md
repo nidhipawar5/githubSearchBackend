@@ -1,9 +1,9 @@
+# Live Hosting
+Github Search : https://fyletask.web.app/
+
 # FyleProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
-
-# Live Hosting
-Github Search : https://fyletask.web.app/
 
 ## Development server
 
