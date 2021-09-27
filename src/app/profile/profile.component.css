@@ -1,0 +1,29 @@
+.profile {
+  background-color: gainsboro;
+}
+.img-circle {
+  width: 7cm;
+  height: 7cm;
+  padding-top: 1cm;
+  padding-left: 2cm;
+  display: flex;
+  float: left;
+}
+.profileName {
+  padding-top: 1.7cm;
+  padding-left: 9cm;
+}
+.details {
+  padding-left: 8.85;
+}
+.profileBtn {
+  padding-top: 0.2cm;
+}
+.centre {
+  padding-left: 8cm;
+  padding-top: 1.4cm;
+  align-self: center;
+}
+.pagination {
+  align-self: center;
+}
