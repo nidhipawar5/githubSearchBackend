@@ -10,6 +10,7 @@ export class ProfileComponent implements OnInit {
   profile:any;
   repos:any;
   username:string;
+  Repo:any;
   
   constructor(private getApi: GetApiService) { 
     
@@ -26,7 +27,12 @@ export class ProfileComponent implements OnInit {
     this.getApi.getProfileRepos().subscribe(repos=>{
       console.log(repos);
       this.repos=repos;
-    })
+    });
+    
+    this.getApi.getRepoTags().subscribe(Repo=>{
+      console.log(Repo);
+      this.Repo=Repo;
+    });
   }
 
 
