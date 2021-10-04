@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { GetApiService } from './services/get-api.service';
 import { ProfileComponent } from './profile/profile.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,

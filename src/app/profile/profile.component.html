@@ -11,8 +11,9 @@
       </div>
     </form>
   </nav>
- 
-  <div *ngIf="profile">
+  
+<div>
+    <div *ngIf="profile">
       <div class="col-sm-10">
           <div class="profileImg">
                 <div >
@@ -29,6 +30,8 @@
             </div>
           </div>
       </div>
+
+      
       <div class=centre>
           <div class="panel-body" *ngFor="let repo of repos">
              <p class="clearfix">
@@ -42,8 +45,9 @@
               <p>
                 <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-warning pull-right">View on github</a>
               </p>
-         </div>
-      </div>
+              <hr style="width:60%;height: 0.5mm">
+          </div>
+       </div>
      
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
@@ -63,8 +67,15 @@
               </li>
             </ul>
           </nav>
+
+         
     
      
       
       
   </div>
+  
+  
+</div>
+  
+   
