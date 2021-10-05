@@ -8,13 +8,13 @@
     <div class="input-group">
       <span class="input-group-text" id="basic-addon1">@</span>
       <input type="text" class="form-control" placeholder="Username"  [(ngModel)]="username" name="username" (keyup.enter)="findProfile()" >
+      <input type="number" class="form-control" placeholder="Number of Repos You Want to get in one Page"  [(ngModel)]="noOfRepo" name="noOfRepo" (keyup.enter)="findProfile" >
     </div>
-    
   </form>
 </nav>
 
 <div *ngIf="noProfileFound===2">
-<h4>No github profile matches the given username.</h4>
+<h1>No Profile Found</h1>
 </div>
 
 <div>
@@ -56,9 +56,7 @@
    
       <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-              <a class="page-link" (click)="getRepoPaginated(pageNumber-1)">Previous</a>
-            </li>
+           
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link"  (click)="getRepoPaginated(2)">2</a></li>
             <li class="page-item"><a class="page-link" (click)="getRepoPaginated(3)">3</a></li>
@@ -67,15 +65,10 @@
             <li class="page-item"><a class="page-link" (click)="getRepoPaginated(6)">6</a></li>
             <li class="page-item"><a class="page-link" (click)="getRepoPaginated(7)">7</a></li>
             <li class="page-item"><a class="page-link" (click)="getRepoPaginated(8)">8</a></li>
-            <li class="page-item enabled">
-              <a class="page-link" href="#" (click)="getRepoPaginated(pageNumber+1)">Next</a>
-            </li>
-            <form>
-              <input type="number" class="form-control" placeholder="Number of Repo You Want to get in one Page"  [(ngModel)]="noOfRepo" name="noOfRepo" >
-             </form>
+            
           </ul>
         </nav>
-         
+
        
   
    

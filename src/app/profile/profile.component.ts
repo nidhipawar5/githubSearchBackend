@@ -10,10 +10,9 @@ export class ProfileComponent implements OnInit {
   profile:any;
   repos:any;
   username:string;
-  Repo:any;
   noOfRepo: number=10;
+  Repo:any;
   noProfileFound: number = 1;
-  pageNumber: number=1;
   
   constructor(private getApi: GetApiService) { 
     

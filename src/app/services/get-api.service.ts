@@ -12,6 +12,7 @@ export class GetApiService {
   private username: string;
   private clientid='f3571d8e55e169540825';
   private clientsecret ='a6c2b7d8f7c691e771b1908873e1322028e097c4';
+  private errorResponse: any;
   
   
 
@@ -27,7 +28,7 @@ export class GetApiService {
   }
 
   getProfileRepos(numberOfRepo, pageNumber){
-  	return this.http.get("https://api.github.com/users/" + this.username + "/repos?client_id=" + this.clientid + "&client_secret=" + this.clientsecret)
+  	return this.http.get("https://api.github.com/users/" + this.username + "/repos?client_id=" + this.clientid + "&client_secret=" + this.clientsecret+ "&per_page=" + numberOfRepo + "&page=" + pageNumber)
   	.pipe(map(res => {return res}));
   }
 
