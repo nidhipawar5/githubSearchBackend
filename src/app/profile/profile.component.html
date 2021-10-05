@@ -43,7 +43,7 @@
                <strong>{{repo.name}}</strong> 
            </p>
             <p>{{repo.description}}</p>
-            
+            <p>{{repo.tags}}</p>
             <p>
               <span class="badge bg-secondary"></span>
             </p>
@@ -54,20 +54,19 @@
         </div>
      </div>
    
-      <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-           
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link"  (click)="getRepoPaginated(2)">2</a></li>
-            <li class="page-item"><a class="page-link" (click)="getRepoPaginated(3)">3</a></li>
-            <li class="page-item"><a class="page-link" (click)="getRepoPaginated(4)">4</a></li>
-            <li class="page-item"><a class="page-link" (click)="getRepoPaginated(5)">5</a></li>
-            <li class="page-item"><a class="page-link" (click)="getRepoPaginated(6)">6</a></li>
-            <li class="page-item"><a class="page-link" (click)="getRepoPaginated(7)">7</a></li>
-            <li class="page-item"><a class="page-link" (click)="getRepoPaginated(8)">8</a></li>
-            
-          </ul>
-        </nav>
+     <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li>
+          <a class="page-link" href="#" (click)="getRepoPaginated(pageNumber-1)">Previous</a>
+        </li>
+        <li class="page-item" *ngFor="let number of totalPages; let i = index;">
+          <a class="page-link" href="#" (click)="getRepoPaginated(number)">{{number}}</a>
+        </li>
+        <li>
+          <a class="page-link" href="#" (click)="getRepoPaginated(pageNumber+1)">Next</a>
+        </li>
+      </ul>
+      </nav>
 
        
   

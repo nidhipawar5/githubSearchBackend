@@ -33,7 +33,7 @@ export class GetApiService {
   }
 
   getRepoTags(){
-    return this.http.get("https://api.github.com/users/"+this.username+"/repo_id/topics")
+    return this.http.get("https://api.github.com/users/" + this.username + "/repo/tags")
     .pipe(map(res => {return res}));
   }
   
