@@ -12,7 +12,6 @@ export class GetApiService {
   private username: string;
   private clientid='f3571d8e55e169540825';
   private clientsecret ='a6c2b7d8f7c691e771b1908873e1322028e097c4';
-  private errorResponse: any;
   
   
 
@@ -33,7 +32,8 @@ export class GetApiService {
   }
 
   getRepoTags(){
-    return this.http.get("https://api.github.com/users/" + this.username + "/repo/tags")
+  
+    return this.http.get("https://api.github.com/repos/"+this.username+"/repo/topics")
     .pipe(map(res => {return res}));
   }
   
