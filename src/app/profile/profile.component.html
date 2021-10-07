@@ -38,18 +38,16 @@
 
     
     <div class=centre>
-        <div class="panel-body" *ngFor="let repo of repos">
+        <div class="panel-body" *ngFor="let repo of repos;let i = index">
            <p class="clearfix">
                <strong>{{repo.name}}</strong> 
            </p>
             <p>{{repo.description}}</p>
-            <div class="panel-body" *ngFor="let item of tags">
+            
               <p >
-                <span class="badge rounded-pill bg-info text-dark" *ngFor="let x of item">{{x}}</span>
+                <span class="badge rounded-pill bg-info text-dark" *ngFor="let item of tags[i]">{{item}}</span>
               </p>
-              
-            </div>
-              
+          
             
             <p>
               <span class="badge bg-secondary"></span>

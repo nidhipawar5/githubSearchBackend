@@ -59,11 +59,12 @@ export class ProfileComponent implements OnInit {
 
     
     this.getApi.getProfileRepos(this.noOfRepo, 1).subscribe(repos=>{
+      this.noProfileFound=1;
       console.log(repos);
       this.repos=repos;
       this.repos.forEach((element) => {
         this.getApi.getRepoTopics(element.name).subscribe(tags => {
-          let temptags=[]
+          let temptags=[];
           for(const key in tags){
             temptags.push(key);
           }
@@ -81,14 +82,22 @@ export class ProfileComponent implements OnInit {
   }
   
   getRepoPaginated(pageNumber) {
+    this.tags = []
     this.pageNumber = pageNumber;
     this.getApi.getProfileRepos(this.noOfRepo, pageNumber).subscribe(repos=> {
-      this.repos = repos;
-      this.repos.forEach((element) => {
+      this.repos.repo = repos;
+      this.repos.repo.forEach((element) => {
         this.getApi.getRepoTopics(element.name).subscribe(tags => {
-          console.log("tags",tags);
-          this.tags=tags;
+          let temptags=[]
+          for(const key in tags){
+            console.log("key", key)
+            temptags.push(key);
+          }
+          this.tags.push(temptags);
+          
         })
+        this.repos.tags = this.tags;
+
       })
     }, () => {
       console.log('No Repos Found')
