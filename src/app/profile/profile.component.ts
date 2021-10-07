@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   username:string;
   noOfRepo: number=10;
   pageNumber: number = 1;
-  Repo:any;
+  tags:any=[];
   noProfileFound: number = 1;
 
   // Current page number
@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   totalPages: any = [];
   // Pager
   pager: any = {};
+  
   
   constructor(private getApi: GetApiService) { 
     
@@ -41,8 +42,14 @@ export class ProfileComponent implements OnInit {
 
   findProfile(){
     this.getApi.updateProfile(this.username);
-    this.getApi.getProfileInfo().subscribe(profile=>{
-      console.log("profile", profile);
+    this.totalPages=[];
+    this.getApi.getProfileInfo().subscribe((profile: any)=>{
+      this.totalRecordsCount = profile.public_repos;
+      let totalPaginator =  Math.ceil(profile.public_repos / this.noOfRepo);
+      for (var i=1;i<=totalPaginator;i++) {
+        this.totalPages.push(i);
+      }
+      console.log("total pages", this.totalPages)
       this.profile=profile;
     }, () => {
       console.log("no profile found");
@@ -54,22 +61,35 @@ export class ProfileComponent implements OnInit {
     this.getApi.getProfileRepos(this.noOfRepo, 1).subscribe(repos=>{
       console.log(repos);
       this.repos=repos;
+      this.repos.forEach((element) => {
+        this.getApi.getRepoTopics(element.name).subscribe(tags => {
+          let temptags=[]
+          for(const key in tags){
+            temptags.push(key);
+          }
+          this.tags.push(temptags);
+          
+        })
+      })
+      console.log("tags",this.tags);
     }, () => {
       console.log("no repos for this user")
     });
     
-    this.getApi.getRepoTags().subscribe(Repo=>{
-      console.log(Repo + "look for this");
-      this.Repo=Repo;
-    }, () => {
-      console.log("no tags for this user")
-    });
+    
+    
   }
-
+  
   getRepoPaginated(pageNumber) {
     this.pageNumber = pageNumber;
     this.getApi.getProfileRepos(this.noOfRepo, pageNumber).subscribe(repos=> {
       this.repos = repos;
+      this.repos.forEach((element) => {
+        this.getApi.getRepoTopics(element.name).subscribe(tags => {
+          console.log("tags",tags);
+          this.tags=tags;
+        })
+      })
     }, () => {
       console.log('No Repos Found')
     })

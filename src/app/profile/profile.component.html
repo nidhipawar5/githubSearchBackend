@@ -43,7 +43,14 @@
                <strong>{{repo.name}}</strong> 
            </p>
             <p>{{repo.description}}</p>
-            <p>{{Repo}}</p>
+            <div class="panel-body" *ngFor="let item of tags">
+              <p >
+                <span class="badge rounded-pill bg-info text-dark" *ngFor="let x of item">{{x}}</span>
+              </p>
+              
+            </div>
+              
+            
             <p>
               <span class="badge bg-secondary"></span>
             </p>
@@ -68,11 +75,6 @@
       </ul>
       </nav>
 
-       
-  
-   
-    
-    
 </div>
 
 

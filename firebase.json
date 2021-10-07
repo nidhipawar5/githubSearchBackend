@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist\\fyle-project",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

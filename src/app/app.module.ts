@@ -15,13 +15,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ProfileComponent, 
     
     
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    
   ],
   providers: [GetApiService],
   bootstrap: [AppComponent]
