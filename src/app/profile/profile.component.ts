@@ -9,7 +9,7 @@ import { GetApiService } from '../services/get-api.service';
 })
 export class ProfileComponent implements OnInit {
   profile:any;
-  repos:any;
+  repos:any={"repo": [] , "tags": []};;
   username:string;
   noOfRepo: number=10;
   pageNumber: number = 1;
@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit {
     this.getApi.updateProfile(this.username);
     this.totalPages=[];
     this.getApi.getProfileInfo().subscribe((profile: any)=>{
+      this.noProfileFound = 1;
       this.totalRecordsCount = profile.public_repos;
       let totalPaginator =  Math.ceil(profile.public_repos / this.noOfRepo);
       for (var i=1;i<=totalPaginator;i++) {
@@ -52,31 +53,34 @@ export class ProfileComponent implements OnInit {
       console.log("total pages", this.totalPages)
       this.profile=profile;
     }, () => {
-      console.log("no profile found");
       this.noProfileFound = 2;
       this.profile = undefined;
     });
 
     
     this.getApi.getProfileRepos(this.noOfRepo, 1).subscribe(repos=>{
-      this.noProfileFound=1;
       console.log(repos);
-      this.repos=repos;
-      this.repos.forEach((element) => {
+      this.repos.repo=repos;
+      this.repos.repo.forEach((element) => {
         this.getApi.getRepoTopics(element.name).subscribe(tags => {
-          let temptags=[];
+          let temptags=[]
           for(const key in tags){
+            console.log("key", key)
             temptags.push(key);
           }
           this.tags.push(temptags);
           
         })
+        this.repos.tags = this.tags;
       })
-      console.log("tags",this.tags);
+      console.log('these are repos', this.repos)
+      console.log(typeof this.repos.tags)
+      console.log(typeof this.tags)
+     
+
     }, () => {
       console.log("no repos for this user")
     });
-    
     
     
   }

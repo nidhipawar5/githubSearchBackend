@@ -36,28 +36,22 @@
         </div>
     </div>
 
-    
     <div class=centre>
-        <div class="panel-body" *ngFor="let repo of repos;let i = index">
-           <p class="clearfix">
-               <strong>{{repo.name}}</strong> 
-           </p>
-            <p>{{repo.description}}</p>
-            
-              <p >
-                <span class="badge rounded-pill bg-info text-dark" *ngFor="let item of tags[i]">{{item}}</span>
-              </p>
-          
-            
-            <p>
-              <span class="badge bg-secondary"></span>
-            </p>
-            <p>
-              <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-warning pull-right">View on github</a>
-            </p>
-            <hr style="width:60%;height: 0.5mm">
-        </div>
-     </div>
+      <div class="panel-body" *ngFor="let repo of repos.repo; let i = index">
+         <p class="clearfix">
+             <strong>{{repo.name}}</strong> 
+         </p>
+          <p>{{repo.description}}</p>
+              <span  *ngFor="let tag of repos.tags[i]" class="badge rounded-pill bg-info text-dark">{{tag}}</span>
+          <p>
+            <span class="badge bg-secondary"></span>
+          </p>
+          <p>
+            <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-warning pull-right">View on github</a>
+          </p>
+          <hr style="width:60%;height: 0.5mm">
+      </div>
+   </div>
    
      <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
