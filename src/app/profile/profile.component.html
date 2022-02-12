@@ -45,14 +45,14 @@
       <div class=centre>
         <div class="card" *ngFor="let repo of repos.repo; let i = index"><br/>
           <p class="clearfix">
-             <strong><a href="{{repo.html_url}}" ><h5> &nbsp; {{repo.name}}</h5></a></strong> 
+            <strong><a href="{{repo.html_url}}" ><h5> {{repo.name}}</h5></a></strong> 
           </p>
-            <p>&nbsp;{{repo.description}}</p>
+            <p>{{repo.description}}</p>
             <div class="panel-body">
-              &nbsp; <span *ngFor="let tag of repos.tags[i]" class="badge bg-warning text-dark"> &nbsp;{{tag}} </span>     
+              <span *ngFor="let tag of repos.tags[i]" class="badge bg-warning text-dark"> {{tag}} </span>     
             </div> 
         <br/>
-    </div>
+      </div>
     
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">

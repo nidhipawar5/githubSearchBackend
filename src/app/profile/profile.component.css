@@ -11,8 +11,8 @@
   overflow: hidden;
 }
 .profileName {
-  padding-top: 1.7cm;
   padding-left: 9cm;
+  padding-top: 1.5cm;
 }
 .details {
   padding-left: 8.85;
@@ -21,9 +21,13 @@
   padding-top: 0.2cm;
 }
 .centre {
-  padding-left: 8cm;
+  padding-left: 9cm;
+  padding-right: 5.7cm;
   padding-top: 1.4cm;
   align-self: center;
+}
+.card {
+  padding-left: 0.5cm;
 }
 .pagination {
   align-self: center;
