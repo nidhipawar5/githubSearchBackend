@@ -1,75 +1,78 @@
-<nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">Github Search</span>
-  </div>
-</nav>
-<nav class="navbar navbar-light bg-light">
-  <form class="container-fluid">
-    <div class="input-group">
-      <span class="input-group-text" id="basic-addon1">@</span>
-      <input type="text" class="form-control" placeholder="Username"  [(ngModel)]="username" name="username" (keyup.enter)="findProfile()" >
-      <input type="number" class="form-control" placeholder="Number of Repos You Want to get in one Page"  [(ngModel)]="noOfRepo" name="noOfRepo" (keyup.enter)="findProfile" >
+<div class="body">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Github Search</span>
     </div>
-  </form>
-</nav>
-
-<div *ngIf="noProfileFound===2">
-<h1>No Profile Found</h1>
-</div>
-
-<div>
-  <div *ngIf="profile">
-    <div class="col-sm-10">
-        <div class="profileImg">
-              <div >
-                  <img src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="Profile Image">
-              </div>
-        </div>
-        <div class="profileName">
-          <h1>{{profile.name}}</h1> <br>
-          <div class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</div>
-          <div class="list-group-item" *ngIf="profile.company">Works at: {{profile.company}}</div>
-          <div class="list-group-item" *ngIf="profile.location"><img src="Images/location.jpg" alt="">{{profile.location}}</div>
-          <div class="profileBtn">
-              <p><a href="{{profile.html_url}}" target="_blank" class="btn btn-success btn-sm">View profile on github</a></p>
-          </div>
-        </div>
-    </div>
-
-    <div class=centre>
-      <div class="panel-body" *ngFor="let repo of repos.repo; let i = index">
-         <p class="clearfix">
-             <strong>{{repo.name}}</strong> 
-         </p>
-          <p>{{repo.description}}</p>
-              <span  *ngFor="let tag of repos.tags[i]" class="badge rounded-pill bg-info text-dark">{{tag}}</span>
-          <p>
-            <span class="badge bg-secondary"></span>
-          </p>
-          <p>
-            <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-warning pull-right">View on github</a>
-          </p>
-          <hr style="width:60%;height: 0.5mm">
+  </nav>
+  <nav class="navbar navbar-light bg-light">
+    <form class="container-fluid">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">@</span>
+        <input type="text" class="form-control" placeholder="Username"  [(ngModel)]="username" name="username" (keyup.enter)="findProfile()" >
+        <input type="number" class="form-control" placeholder="Number of Repos You Want to get in one Page"  [(ngModel)]="noOfRepo" name="noOfRepo" (keyup.enter)="findProfile" >
       </div>
-   </div>
-   
-     <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li>
-          <a class="page-link" href="#" (click)="getRepoPaginated(pageNumber-1)">Previous</a>
-        </li>
-        <li class="page-item" *ngFor="let number of totalPages; let i = index;">
-          <a class="page-link" href="#" (click)="getRepoPaginated(number)">{{number}}</a>
-        </li>
-        <li>
-          <a class="page-link" href="#" (click)="getRepoPaginated(pageNumber+1)">Next</a>
-        </li>
-      </ul>
-      </nav>
+    </form>
+  </nav>
 
+  <div *ngIf="noProfileFound===2">
+  <h1>No Profile Found</h1>
+  </div>
+
+  <div>
+    <div *ngIf="profile">
+      <div class="col-sm-10">
+          <div class="profileImg">
+                <div >
+                    <img src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="Profile Image">
+                </div>
+          </div>
+          <div class="profileName">
+            <h1>{{profile.name}}</h1> <br>
+            <div class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</div>
+            <div class="list-group-item" *ngIf="profile.company">Works at: {{profile.company}}</div>
+            <div class="list-group-item" *ngIf="profile.location"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+            </svg> {{profile.location}}</div>
+            <div class="profileBtn">
+                <p><a href="{{profile.html_url}}" target="_blank" class="btn btn-success btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link" viewBox="0 0 16 16">
+                  <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+                  <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
+                </svg> View on Github</a></p>
+            </div>
+          </div>
+      </div>
+
+      <div class=centre>
+        <div class="card" *ngFor="let repo of repos.repo; let i = index"><br/>
+          <p class="clearfix">
+             <strong><a href="{{repo.html_url}}" ><h5> &nbsp; {{repo.name}}</h5></a></strong> 
+          </p>
+            <p>&nbsp;{{repo.description}}</p>
+            <div class="panel-body">
+              &nbsp; <span *ngFor="let tag of repos.tags[i]" class="badge bg-warning text-dark"> &nbsp;{{tag}} </span>     
+            </div> 
+        <br/>
+    </div>
+    
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li>
+            <a class="page-link" href="#" (click)="getRepoPaginated(pageNumber-1)"> Previous</a>
+          </li>
+          <li class="page-item" *ngFor="let number of totalPages; let i = index;">
+            <a class="page-link" href="#" (click)="getRepoPaginated(number)">{{number}}</a>
+          </li>
+          <li>
+            <a class="page-link" href="#" (click)="getRepoPaginated(pageNumber+1)">Next</a>
+          </li>
+        </ul>
+        </nav>
+
+  </div>
+
+
+  </div>
 </div>
 
-
-</div>
 
  

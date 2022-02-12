@@ -2,12 +2,13 @@
   background-color: gainsboro;
 }
 .img-circle {
-  width: 7cm;
-  height: 7cm;
-  padding-top: 1cm;
-  padding-left: 2cm;
+  width: 6cm;
+  height: 6cm;
+  margin-top: 1.5cm;
   display: flex;
   float: left;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .profileName {
   padding-top: 1.7cm;
