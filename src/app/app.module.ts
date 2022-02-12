@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { GetApiService } from './services/get-api.service';
 import { ProfileComponent } from './profile/profile.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
+    NgxSkeletonLoaderModule,
     
   ],
   providers: [GetApiService],

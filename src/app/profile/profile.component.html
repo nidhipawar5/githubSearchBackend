@@ -9,7 +9,7 @@
       <div class="input-group">
         <span class="input-group-text" id="basic-addon1">@</span>
         <input type="text" class="form-control" placeholder="Username"  [(ngModel)]="username" name="username" (keyup.enter)="findProfile()" >
-        <input type="number" class="form-control" placeholder="Number of Repos You Want to get in one Page"  [(ngModel)]="noOfRepo" name="noOfRepo" (keyup.enter)="findProfile" >
+        <input type="number" class="form-control" placeholder="Number of Repos / Page"  [(ngModel)]="noOfRepo" name="noOfRepo" (keyup.enter)="findProfile" >
       </div>
     </form>
   </nav>
@@ -19,6 +19,7 @@
   </div>
 
   <div>
+    <ngx-skeleton-loader count="5" appearance="line" > </ngx-skeleton-loader>
     <div *ngIf="profile">
       <div class="col-sm-10">
           <div class="profileImg">
@@ -29,7 +30,7 @@
           <div class="profileName">
             <h1>{{profile.name}}</h1> <br>
             <div class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</div>
-            <div class="list-group-item" *ngIf="profile.company">Works at: {{profile.company}}</div>
+            <div class="list-group-item" *ngIf="profile.company"><i>Works at:</i> {{profile.company}}</div>
             <div class="list-group-item" *ngIf="profile.location"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
               <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
             </svg> {{profile.location}}</div>

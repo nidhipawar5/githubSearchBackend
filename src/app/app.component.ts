@@ -12,15 +12,18 @@ import { GetApiService } from './services/get-api.service';
 export class AppComponent {
   user:any;
   repos:any;
-
-  data:Array<any>
-  totalRecords:Number
-  page:Number=1
+  data:any;
+  totalRecords:Number;
+  page:Number=1;
+  skeletonloader=true;
   
   title = 'fyle-project';
   constructor(private api:GetApiService){
     console.log('Github Component Init...');
-    
+    this.api.getProfileInfo().subscribe(data => {
+      this.data = data;
+      this.skeletonloader = false;
+      }, error => console.error(error));
   }
   
   ngOnInit(){
