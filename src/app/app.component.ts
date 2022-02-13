@@ -15,15 +15,16 @@ export class AppComponent {
   data:any;
   totalRecords:Number;
   page:Number=1;
-  skeletonloader=true;
+  loader=true;
   
   title = 'fyle-project';
   constructor(private api:GetApiService){
     console.log('Github Component Init...');
     this.api.getProfileInfo().subscribe(data => {
       this.data = data;
-      this.skeletonloader = false;
+      this.loader = false;
       }, error => console.error(error));
+
   }
   
   ngOnInit(){

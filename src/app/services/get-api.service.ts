@@ -14,7 +14,6 @@ export class GetApiService {
   private clientsecret ='a6c2b7d8f7c691e771b1908873e1322028e097c4';
   private headers;
   
-  
 
   constructor(
     private http: HttpClient

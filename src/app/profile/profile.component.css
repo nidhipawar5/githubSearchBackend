@@ -1,3 +1,12 @@
+/*.body {
+  background: rgb(237, 235, 75);
+  background: linear-gradient(
+    90deg,
+    rgba(237, 235, 75, 1) 10%,
+    rgba(45, 164, 78, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}*/
 .profile {
   background-color: gainsboro;
 }

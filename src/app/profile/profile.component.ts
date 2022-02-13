@@ -1,7 +1,7 @@
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../services/get-api.service';
-
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -84,6 +84,7 @@ export class ProfileComponent implements OnInit {
     
     
   }
+  
   
   getRepoPaginated(pageNumber) {
     this.tags = []

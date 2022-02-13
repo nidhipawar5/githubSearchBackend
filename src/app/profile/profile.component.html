@@ -19,7 +19,6 @@
   </div>
 
   <div>
-    <ngx-skeleton-loader count="5" appearance="line" > </ngx-skeleton-loader>
     <div *ngIf="profile">
       <div class="col-sm-10">
           <div class="profileImg">
@@ -27,7 +26,7 @@
                     <img src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="Profile Image">
                 </div>
           </div>
-          <div class="profileName">
+          <div class="profileName" >
             <h1>{{profile.name}}</h1> <br>
             <div class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</div>
             <div class="list-group-item" *ngIf="profile.company"><i>Works at:</i> {{profile.company}}</div>
@@ -54,7 +53,7 @@
             </div> 
         <br/>
       </div>
-    
+      <br/>
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
           <li>
